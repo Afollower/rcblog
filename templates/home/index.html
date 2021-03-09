@@ -1,0 +1,62 @@
+{% extends 'home/HomeBase.html' %}
+
+{% block Information %}
+{% endblock %}
+
+{% block content %}
+
+{%csrf_token%}
+
+<div class="article-list">
+    {% for item in articles %}
+    <div class="article-item-box">
+        <h4><a href="/show-blog/{{ item.id }}">
+            <span class="article-type type-1">{{ item.tag_id }}</span>
+            {{ item.title }}
+        </a></h4>
+        <p class="content">{{ item.content }}</p>
+        <div class="info-box d-flex align-content-center">
+            <p>
+                <span class="date">{{item.updated}}</span>
+                <span class="read-num">{{ item.visits }}人已读</span>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row justify-content-center">
+        {% if pages %}
+        <ul id="pages" class="pagination pagination-sm">
+            {% if pages.first %}
+            <li class="page-item"><a class="page-link" href="?page_mp=1">1</a></li>
+            {% endif %}
+
+            {% if pages.left %}
+                {% if pages.left_has_more %}
+                <li class="page-item"><span>. . .</span></li>
+                {% endif %}
+                {% for i in pages.left %}
+                <li class="page-item"><a class="page-link" href="?page_mp={{i}}">{{i}}</a></li>
+                {% endfor %}
+            {% endif %}
+
+            <li class="page-item active"><a class="page-link" href="?page_mp={{pages.page}}">{{pages.page}}</a>
+            </li>
+
+            {% if pages.right %}
+                {% for i in pages.right %}
+                <li class="page-item"><a class="page-link" href="?page_mp={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if pages.right_has_more %}
+                <li class="page-item">...</li>
+                {% endif %}
+            {% endif %}
+
+            {% if pages.last %}
+            <li class="page-item"><a class="page-link" href="?page_mp={{pages.total_pages}}">{{pages.total_pages}}</a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

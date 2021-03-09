@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+          name="viewport">
+    <title>RC的博客</title>
+    <link rel="icon" href="/static/img/1.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/myStyle.css">
+    <link rel="stylesheet" href="/static/css/markdown.css">
+</head>
+
+<body>
+<div id="main">
+    <header class="bs-docs-nav navbar navbar-static-top" id="top"></header>
+    <div class="main-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">RC的博客</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav" id="headerNav">
+                        <li class="nav-item"><a class="nav-link" href="/index/"> 技术分享 </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/think/"> 随笔 </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about/"> 关于我 </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/"> 管理 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <section class="section">
+                <div class="row" style="display: flex;">
+
+                    <div class="divLeft">
+                        <!--右侧详细信息-->
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="/static/img/touxiang2.png" class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">A follower</h5>
+                                        <p class="card-text">这里是一个新人的博客。 <br>【基于Django搭建】</p>
+                                        <p class="card-text">主要用于个人的学习记录与分享。</p>
+                                        <a href="https://blog.csdn.net/Afollower" class="card-link">CSDN</a>
+                                        <a href="https://github.com/Afollower" class="card-link">Github</a>
+                                        <p class="card-text"><small class="text-muted">Last updated date</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                阅读排行榜
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    {% for top in tops %}
+                                    <li class="list-group-item">
+                                        <a id="{{ top.id }}" href="/show-blog/{{ top.id }}">
+                                            <span class="float-left">{{ top.title }}</span>
+                                            <span class="float-right">{{ top.visits }}人已读</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                博客分类
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a id="0" href="/index/?type_id=0" class="text-dark">
+                                            <span class="float-left">All</span>
+                                            <span class="float-right">{{ articles.count }}篇</span>
+                                        </a>
+                                    </li>
+                                    {% for category in categories %}
+                                    <li class="list-group-item">
+                                        <a id="{{ category.id }}" href="/index/?type_id={{ category.id }}"
+                                           class="text-dark">
+                                            <span class="float-left">{{ category.title }}</span>
+                                            <span class="float-right">{{ category.count }}篇</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                最新分享
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    {% for new in news %}
+                                    <li class="list-group-item">
+                                        <a id="{{ new.id }}" href="/show-blog/{{ new.id }}" class="text-dark">
+                                            <span class="float-left">{{ new.title }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        {% block Information %}
+                        {% endblock %}
+
+<!--                        <div class="card mb-3" style="max-width: 540px;">-->
+<!--                            <div class="row no-gutters">-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <img src="/static/img/QrCode/github2.png" class="card-img" alt="...">-->
+<!--                                    <div class="card-body">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <img src="/static/img/QrCode/CSDN2.png" class="card-img" alt="...">-->
+<!--                                    <div class="card-body">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="divRight">
+                    <!--中间博客内容，和博客目录-->
+                    {% block content %}
+                    {% endblock %}
+
+                        <header class="bs-docs-nav navbar navbar-static-top" id="down"></header>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="simple-footer">
+    <p><a href="#top" class="back-to-top"> Back to top </a> | <a href="/index/">技术分享</a> | <a href="/think/">随笔</a> | <a
+            href="/about/">关于我</a> | <a href="/admin/">管理</a></p>
+    <p>RC的博客 · by 任 - email 1838331520@qq.com</p>
+</div>
+</body>
+<script>
+    function LimitTextArea(field){
+        max_limit=200;
+        if (field.value.length > max_limit)
+            field.value = field.value.substring(0, max_limit);
+    }
+
+    function makeExpandingArea(el) {
+    var timer = null;
+    //由于ie8有溢出堆栈问题，故调整了这里
+    var setStyle = function(el, auto) {
+        if (auto) el.style.height = 'auto';
+        el.style.height = el.scrollHeight + 'px';
+    }
+    var delayedResize = function(el) {
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+        timer = setTimeout(function() {
+            setStyle(el)
+        }, 200);
+    }
+    if (el.addEventListener) {
+        el.addEventListener('input', function() {
+            setStyle(el, 1);
+        }, false);
+        setStyle(el)
+    } else if (el.attachEvent) {
+        el.attachEvent('onpropertychange', function() {
+            setStyle(el)
+        })
+        setStyle(el)
+    }
+    if (window.VBArray && window.addEventListener) { //IE9
+        el.attachEvent("onkeydown", function() {
+            var key = window.event.keyCode;
+            if (key == 8 || key == 46) delayedResize(el);
+
+        });
+        el.attachEvent("oncut", function() {
+            delayedResize(el);
+        }); //处理粘贴
+    }
+}
+
+var textarea = document.getElementById('textarea');
+makeExpandingArea(textarea);
+
+
+
+</script>
+
+<script>
+// 评论模块回复
+
+window.onload=change_inputValue;
+function change_inputValue(id, text){
+    var inputElement = document.getElementById(id);
+    inputElement.value = text;
+
+    var divReply = document.getElementById("replayInfo");
+    //var replyInfo = "ces";
+    //divReply.innerHTML = replyInfo
+    console.log('test')
+    if(divReply.style.display=="none"){
+        divReply.style.display="";
+    }else{
+        divReply.style.display="none";
+    }
+}
+
+
+</script>
+<script type="text/javascript" >
+	function menuFixed(id){
+	    var obj = document.getElementById(id);
+	    var _getHeight = obj.offsetTop;
+
+	    window.onscroll = function(){
+	        changePos(id,_getHeight);
+	    }
+	}
+	function changePos(id,height){
+	    var obj = document.getElementById(id);
+	    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	    if(scrollTop < height){
+	        obj.style.position = 'relative';
+	    }else{
+	        obj.style.position = 'fixed';
+	    }
+	}
+</script>
+<script type="text/javascript">
+window.onload = function(){
+    menuFixed('nav');
+}
+</script>
+</html>
+

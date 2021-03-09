@@ -1,0 +1,277 @@
+.markdown_views *,legend{box-sizing:border-box}
+code,kbd,pre,samp{font-family:monospace,monospace;
+font-size:1em}
+a{background-color:transparent;
+-webkit-text-decoration-skip:objects}
+abbr[title]{border-bottom:none;
+text-decoration:underline;
+text-decoration:underline dotted}
+b,strong{font-weight:inherit;
+font-weight:bolder}
+mark{background-color:#ff0;
+color:#000}
+small{font-size:80%}
+sub,sup{font-size:75%;
+line-height:0;
+position:relative}
+sub{bottom:-.25em}
+sup{top:-.5em}
+audio:not([controls]){display:none;
+height:0}
+img{border-style:none}
+svg:not(:root){overflow:hidden}
+button,input,optgroup,select,textarea{font-family:sans-serif;
+font-size:100%;
+line-height:1.15;
+margin:0}
+button,select{text-transform:none}
+[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;
+padding:0}
+[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}
+[type=checkbox],[type=radio]{box-sizing:border-box;
+padding:0}
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;
+outline-offset:-2px}
+[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;
+font:inherit}
+.markdown_views,body,html{font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif}
+fieldset{padding:.35em .75em .625em}
+legend{display:table;
+max-width:100%;
+padding:0;
+color:inherit;
+white-space:normal}
+textarea{overflow:auto}
+summary{display:list-item}
+[hidden],template{display:none}
+body,html{color:rgba(0,0,0,.75);
+font-variant-ligatures:common-ligatures;
+line-height:1.625;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+tab-size:4;
+-moz-tab-size:4;
+-o-tab-size:4}
+.app--dark .layout__panel--editor,.app--dark .layout__panel--preview{color:hsla(0,0%,100%,.75)}
+.markdown_views blockquote,.markdown_views dl,.markdown_views ol,.markdown_views p,.markdown_views pre,.markdown_views ul{margin:1.2em 0}
+.markdown_views ol ol,.markdown_views ol ul,.markdown_views ul ol,.markdown_views ul ul{margin:0}
+.markdown_views dt{font-weight:700}
+.markdown_views code *,.markdown_views pre *,.markdown_views samp *{font-size:inherit}
+.markdown_views blockquote{color:rgba(0,0,0,.5);
+padding-left:1.5em}
+.app--dark .layout__panel--editor .markdown_views blockquote,.app--dark .layout__panel--preview .markdown_views blockquote{color:hsla(0,0%,100%,.4);
+border-left-color:hsla(0,0%,100%,.075)}
+.markdown_views code{padding:2px 4px}
+.markdown_views pre>code{background-color:rgba(0,0,0,.05);
+display:block;
+padding:.5em;
+-webkit-text-size-adjust:none;
+overflow-x:auto;
+white-space:pre}
+.markdown_views .toc ul{list-style-type:none;
+padding-left:20px}
+.markdown_views table{background-color:transparent;
+border-spacing:0}
+.markdown_views td,.markdown_views th{border-right:1px solid #dcdcdc;
+padding:8px 12px}
+.markdown_views td{border-top:1px solid #dcdcdc}
+.markdown_views mark{background-color:#f8f840}
+.markdown_views abbr[title]{cursor:help}
+.markdown_views img[src*="#pic_center"]{display:block;
+margin:auto}
+.markdown_views img[src*="#pic_right"]{display:block;
+margin:auto 0 auto auto}
+.markdown_views .task-list-item{list-style-type:none}
+.markdown_views .task-list-item-checkbox{margin:0 .2em 0 -1.3em}
+.markdown_views .page-break-after{page-break-after:always}
+.markdown_views .stackedit__html{margin-bottom:180px;
+margin-left:auto;
+margin-right:auto;
+padding-left:30px;
+padding-right:30px;
+max-width:750px}
+.markdown_views .stackedit__toc ul{padding:0}
+.markdown_views .stackedit__toc ul a{margin:.5rem 0;
+padding:.5rem 1rem}
+.markdown_views .stackedit__toc ul ul{color:#888;
+font-size:.9em}
+.markdown_views .stackedit__toc ul ul a{margin:0;
+padding:.1rem 1rem}
+.markdown_views .stackedit__toc li{display:block}
+.markdown_views .stackedit__toc a{display:block;
+color:inherit;
+text-decoration:none}
+.markdown_views .stackedit__toc a:active,.markdown_views .stackedit__toc a:focus,.markdown_views .stackedit__toc a:hover{background-color:rgba(0,0,0,.075);
+border-radius:4px}
+.markdown_views .stackedit__left{position:fixed;
+display:none;
+width:250px;
+height:100%;
+top:0;
+left:0;
+overflow-x:hidden;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+-ms-overflow-style:none}
+.markdown_views .stackedit__right{position:absolute;
+right:0;
+top:0;
+left:0}
+@media (min-width:1060px){.markdown_views .stackedit__left{display:block}
+.markdown_views .stackedit__right{left:250px}
+}
+.markdown_views .stackedit--pdf blockquote{border-left-color:#ececec}
+.markdown_views .stackedit--pdf .stackedit__html{padding-left:0;
+padding-right:0;
+max-width:none}
+.markdown_views p{font-size:18px;
+color:#4d4d4d;
+font-weight:400;
+line-height:26px;
+margin:0 0 16px}
+.markdown_views strong{font-weight:700}
+.markdown_views i,address,cite,dfn,em,var{font-style:italic}
+.markdown_views h1,.markdown_views h2,.markdown_views h3,.markdown_views h4,.markdown_views h5,.markdown_views h6{color:#4f4f4f;
+margin:8px 0 16px;
+font-weight:700}
+.markdown_views ol,.markdown_views ul{margin:0 0 24px;
+padding:0;
+font-size:16px}
+.markdown_views ul ol{margin:0 0 24px 32px}
+.markdown_views ul li{list-style-type:disc;
+margin:8px 0 0 32px}
+.markdown_views ol li{list-style-type:decimal;
+margin-left:40px;
+margin-top:8px}
+.markdown_views img{margin:24px 0;
+max-width:100%}
+.markdown_views h1{font-size:28px;
+line-height:36px}
+.markdown_views h2{font-size:24px;
+line-height:32px}
+.markdown_views h3{font-size:22px;
+line-height:30px}
+.markdown_views h4{font-size:20px;
+line-height:28px}
+.markdown_views h5{font-size:18px;
+line-height:26px}
+.markdown_views h6{font-size:16px;
+line-height:24px}
+.markdown_views h1 code{font-size:28px}
+.markdown_views h2 code{font-size:24px}
+.markdown_views h3 code{font-size:22px}
+.markdown_views h4 code{font-size:20px}
+.markdown_views h5 code{font-size:18px}
+.markdown_views h6 code{font-size:16px}
+.markdown_views blockquote{display:block;
+padding:16px;
+margin:0 0 24px;
+border-left:8px solid #dddfe4;
+background:#eef0f4;
+overflow:auto}
+.markdown_views blockquote ol,.markdown_views blockquote ul{margin-bottom:0;
+padding:0;
+font-size:14px;
+line-height:22px}
+.markdown_views blockquote ol li,.markdown_views blockquote ul li{margin-bottom:0}
+.markdown_views blockquote p{font-size:14px;
+line-height:22px;
+color:#555666;
+font-weight:400;
+margin-bottom:0}
+.markdown_views hr{margin:24px 0;
+border:none;
+border-bottom:1px solid #ddd}
+.markdown_views table tr{border:0;
+border-top:1px solid #ddd;
+background-color:#fff}
+.markdown_views table{border-collapse:collapse;
+display:table;
+width:100%;
+text-align:center;
+margin-bottom:24px}
+.markdown_views tbody{border:0}
+.markdown_views table tr:nth-child(2n){background-color:#f7f7f7}
+.markdown_views table tr td,.markdown_views table tr th{font-size:14px;
+color:#4f4f4f;
+line-height:22px;
+border:1px solid #ddd;
+padding:8px;
+word-break:normal!important;
+vertical-align:middle}
+.markdown_views table tr td code,.markdown_views table tr th code{white-space:normal;
+word-break:normal!important}
+.markdown_views table tr th{font-weight:700;
+background-color:#eff3f5}
+.markdown_views dl{margin:24px}
+.markdown_views dl dt{margin:8px;
+font-weight:700}
+.markdown_views dl dt dd{margin:8px}
+.markdown_views abbr[data-original-title],.markdown_views abbr[title]{cursor:help;
+border-bottom:1px dotted #999}
+.markdown_views .initialism{font-size:90%;
+text-transform:uppercase}
+.markdown_views pre{margin-bottom:24px}
+.markdown_views pre code{color:unset}
+.markdown_views code,.markdown_views kbd,.markdown_views pre,.markdown_views samp{font-family:Source Code Pro,DejaVu Sans Mono,Ubuntu Mono,Anonymous Pro,Droid Sans Mono,Menlo,Monaco,Consolas,Inconsolata,Courier,monospace,PingFang SC,Microsoft YaHei,sans-serif;
+font-size:14px;
+line-height:22px;
+color:#000}
+.markdown_views code{color:#c7254e;
+background-color:#f9f2f4;
+border-radius:2px}
+.markdown_views a{text-decoration-skip:ink;
+color:#4ea1db;
+text-decoration:none}
+.markdown_views a:focus,.markdown_views a:hover{text-decoration:none;
+color:#ca0c16}
+.markdown_views a:visited{color:#6795b5}
+.markdown_views .footnote{vertical-align:top;
+position:relative;
+top:-4px;
+font-size:12px}
+.markdown_views .footnotes ol li{font-size:14px;
+line-height:22px;
+margin:0 0 8px 24px}
+.markdown_views .flow-chart,.markdown_views .sequence-diagram{text-align:center;
+margin-bottom:24px;
+font-size:14px!important}
+.markdown_views .flow-chart svg,.markdown_views .sequence-diagram svg{width:unset}
+.markdown_views .flow-chart [fill="#000"],.markdown_views .flow-chart [fill="#000000"],.markdown_views .flow-chart [fill=black],.markdown_views .sequence-diagram [fill="#000"],.markdown_views .sequence-diagram [fill="#000000"],.markdown_views .sequence-diagram [fill=black]{fill:#4f4f4f}
+.markdown_views .flow-chart [stroke="#000000"],.markdown_views .sequence-diagram [stroke="#000000"]{stroke:#4f4f4f}
+.markdown_views .MathJax_SVG_Display{text-align:center;
+margin:24px 0;
+font-size:18px;
+font-weight:400;
+color:#4f4f4f;
+position:relative;
+text-indent:0;
+max-width:none;
+max-height:none;
+min-width:0;
+min-height:0;
+width:100%}
+.markdown_views .toc{font-size:18px;
+line-height:24px;
+margin:0 0 24px;
+padding:0}
+.markdown_views .toc ul{margin:0 0 8px;
+padding:0}
+.markdown_views .toc ul ul{padding-left:24px}
+.markdown_views .toc ul li{list-style-type:none;
+margin:8px 0 0 24px}
+.markdown_views dl dd{margin:0 0 8px 40px}
+.markdown_views kbd{padding:2px 8px;
+border:1px solid rgba(63,63,63,.25);
+box-shadow:0 1px 0 rgba(63,63,63,.25);
+background-color:#fff;
+color:#333;
+border-radius:4px;
+display:inline-block;
+margin:0 2px;
+white-space:nowrap}
+.markdown_views .katex-display{overflow:hidden;
+overflow-x:auto}

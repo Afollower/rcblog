@@ -1,0 +1,204 @@
+{% extends 'home/HomeBase.html' %}
+
+{% block Information %}
+<div class="card" id="nav">
+    <div class="card-header">
+        目录
+    </div>
+    <div class="card-body">
+        {{ toc | safe }}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h3>{{blog.title}}</h3>
+        <ul class="blog_info_description">
+            <li>作者：A follower</li>
+            <li>发表日期：{{blog.created|date:"Y-m-d H:i:s"}}</li>
+            <li>阅读：({{blog.visits}})</li>
+        </ul>
+        <div class="markdown_views prism-tomorrow-night"> {{ blog.md_content | safe }}</div>
+    </div>
+    <div class="card-footer">
+        <!--        <p class="left">访问：{{ blog.visits }} 点赞：{{ blog.ups }}</p>-->
+    </div>
+</div>
+
+{% if comments %}
+<div class="card">
+    <div class="card-body">
+        <div class="form-divider">评论列表</div>
+        <div class="comment-box">
+            <div class="comment-list-container" style="display: block;">
+                <div class="comment-list-box">
+                    <ul class="comment-list">
+                        {% for comment in comments %}
+                        <li class="comment-line-box d-flex" data-replyname="kimol_justdo">
+                            <div style="display: flex;width: 100%;">
+                                <!--                        头像-->
+                                <div class="right-box ">
+                                    <div class="new-info-box clearfix">
+                                        <span class="name">{{comment.user_name}}</span>
+                                        <span class="date">({{ comment.created|date:"Y-m-d H:i:s" }})</span>
+                                        <span class="colon" style="margin-right: 10px">:</span>
+                                        <span class="floor-num"></span>
+                                        <span class="new-comment" style="margin-right: 20px">{{comment.content}}</span>
+                                        <span class="new-opt-floating">
+                                            <a href="#reply" class="btn-bt  btn-reply"
+                                               onclick="javascript:change_inputValue('comment-id', {{comment.id}}, '{{comment.user_name}}')">
+                                            回复</a>
+                                        </span>
+                                        {% if comment.ups %}
+                                        <span class="new-opt-floating">
+                                            <a href="#comment" class="btn-bt  btn-reply"
+                                               onclick="javascript:show_comments('more_reply')">
+                                                更多[{{comment.ups|length}}]</a>
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% if comment.ups %}
+                        <li class="replay-box" id="more_reply" style="display: none;">
+                            <ul class="comment-list">
+                                {% for reply in comment.ups %}
+                                <li class="comment-line-box d-flex" data-replyname="Afollower">
+                                    <div style="display: flex;width: 100%;">
+                                        <div class="right-box">
+                                            <div class="new-info-box clearfix">
+                                                <span class="name mr-8">{{reply.user_name}}</span>
+                                                <span class="date">({{ comment.created|date:"Y-m-d H:i:s" }})</span>
+
+                                                <span class="text">回复 @{{reply.replied_user}}</span>
+                                                <span class="colon" style="margin-right: 10px">:</span>
+                                                <span class="text"></span>
+                                                <span class="new-comment" style="margin-right: 20px">{{reply.content}}</span>
+
+                                                <span class="new-opt-floating">
+                                                <a href="#comment" class="btn-bt  btn-reply"
+                                                   onclick="javascript:change_inputValue('comment-id', {{comment.id}}, '{{reply.user_name}}')">
+                                                回复</a>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="card">
+    <div class="card-header">
+        <!-- 回复：xx 添加按钮，取消回复-->
+        <div class="float-right" id="cancelReply" style="display: block;">
+            <a href="#reply"
+               onclick="javascript:change_inputValue('comment-id', 0, '畅抒己见')"
+               class="btn btn-outline-secondary btn-sm">直抒己见</a>
+        </div>
+        <h4 id="comment-title">畅抒己见</h4>
+    </div>
+    <div class="card-body">
+        <header class="bs-docs-nav navbar navbar-static-top" id="reply"></header>
+        <form method="POST" action="/comment/">
+            {%csrf_token%}
+            <div class="row">
+                <div class="form-group col-lg-6 col-6 col-sm-12">
+                    <div class="form-divider">昵称</div>
+                    <input name="name" type="text" class="form-control" placeholder="昵称">
+                </div>
+                <div class="form-group col-lg-6 col-6 col-sm-12">
+                    <div class="form-divider">邮箱</div>
+                    <input name="email" type="text" class="form-control" placeholder="如需获取回复信息，请输入邮箱">
+                </div>
+                <div class="form-group col-lg-12 col-12 col-sm-12">
+                    <div class="form-divider">评论</div>
+                    <textarea id="textarea" name="comment" rows="3" class="form-control"
+                              onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)"
+                              onkeypress="LimitTextArea(this)" placeholder="直抒己见"></textarea>
+                </div>
+                <div class="form-group col-lg-8 col-8"></div>
+                <div class="form-group col-lg-4 col-4 col-sm-12">
+                    <input name="blog-id" value="{{blog.id}}" type="hidden"/>
+                    <input name="comment-id" id="comment-id" value="0" type="hidden"/>
+                    <input name="reply_name" id="reply_name" value="0" type="hidden"/>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm" name="todo" id="todo" value="1">
+                        提交评论
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+// 评论模块回复
+window.onload=change_inputValue;
+function show_comments(id){
+    var liElement = document.getElementById(id);
+    if (liElement.style.display == 'none') {
+        liElement.style.display = 'block';
+    } else {
+        liElement.style.display = 'none';
+    }
+}
+function change_inputValue(id, text, title){
+    if (id===undefined || text===undefined) {
+        text = 0; // 赋予初始值
+    }
+    else {
+        var inputElement = document.getElementById(id);
+        inputElement.value = text;
+    }
+
+    try{
+        var divId = 'cancelReply';
+        var divObj = document.getElementById(divId);
+        if (divObj===undefined || divObj===undefined) {
+            console.log('div not find');
+        }
+        else {
+            if (divObj.style.display == 'none' && text != 0) {
+                divObj.style.display = 'block';
+            } else {
+                if (text===0) {
+                    divObj.style.display = 'none';
+                }
+            }
+        }
+    }
+    catch(e){
+        console.log(e.message);//sojson is undefined
+    }
+
+    if (title===undefined) {
+        title = '畅抒己见';
+    } else {
+        var reply_comment_name = "reply_name";
+        var inputElement = document.getElementById(reply_comment_name);
+        inputElement.value = title;
+        if ( title !== '畅抒己见'){
+            title = '回复@' + title;
+        }
+    }
+    var commentId = 'comment-title';
+    var commentTitle = document.getElementById(commentId);
+    commentTitle.innerHTML = title;
+}
+</script>
+{% endblock %}

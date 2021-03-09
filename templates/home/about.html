@@ -1,0 +1,24 @@
+{% extends 'home/HomeBase.html' %}
+{% block css %}
+{% endblock %}
+
+{% block Information %}
+<div class="card">
+    <div class="card-header">
+        目录
+    </div>
+    <div class="card-body">
+        {{ toc | safe }}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{%csrf_token%}
+<div class="card">
+    <div class="card-body">
+        <div class="markdown_views prism-tomorrow-night"> {{ about | safe }} </div>
+    </div>
+</div>
+{% endblock %}
