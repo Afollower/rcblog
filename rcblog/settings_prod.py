@@ -176,10 +176,10 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # 关闭浏览器，则COOKIE失效
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myblog',
-        'USER': 'root',
-        'PASSWORD': 'rcadmin',
-        'HOST': '118.24.124.26',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'POST': '3306',
     }
 }
